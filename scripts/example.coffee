@@ -9,7 +9,11 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-
+  robot.respond /corgi me/i, (msg) ->
+    msg.http("http://corginator.herokuapp.com/random")
+      .get() (err, res, body) ->
+        msg.send JSON.parse(body).corgi
+  
   # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
     res.send "badger badger badger"
@@ -92,17 +96,6 @@ module.exports = (robot) ->
   #     res.send "Who you calling 'slow'?"
   #   , 60 * 1000
   #
-  # annoyIntervalId = null
-  #
-  # robot.respond /annoy me/, (res) ->
-  #   if annoyIntervalId
-  #     res.send "AAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEEEEIIIIIIIIHHHHHHHHHH"
-  #     return
-  #
-  #   res.send "Hey, want to hear the most annoying sound in the world?"
-  #   annoyIntervalId = setInterval () ->
-  #     res.send "AAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEEEEIIIIIIIIHHHHHHHHHH"
-  #   , 1000
   #
   # robot.respond /unannoy me/, (res) ->
   #   if annoyIntervalId

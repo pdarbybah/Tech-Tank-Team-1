@@ -2,11 +2,18 @@ Tech Tank Challenge Activity
 
 + Provide a prototype for a DevOps communication tool [a Slack bot known as ChatOps]
 	+ Can currently retrieve the last commit in bitbucket
-	+ Can respond to simply queries
+	+ Goals:
+		+ 
 + Design the architecture for a cloud-based DevOps platform that will complement and support ChatOps
 	+ Atlassian suite
 		+ Bitbucket for git repository hosting
 		+ JIRA for Spring, backlog, and issue management
 		+ Confluence for wiki
 		+ Bamboo for continuous integration testing and continuous deployment
-+ Present your solution with a focus on how your ChatOps prototype adds value to a string DevOps platform
+	+ Reasons for chosen
+		+ Already well integrated with each other
+		+ Some built-in integration with Slack (Bitbucket's new commits and Jira's issue management)
+		+ Robust and well-documented APIs (no API keys needed)
++ Present your solution with a focus on how your ChatOps prototype adds value to a strong DevOps platform
+	+ Cultural
+		+ Bring value by allowing the chat service to have the 
