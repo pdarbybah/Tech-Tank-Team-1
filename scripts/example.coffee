@@ -9,9 +9,9 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  # ROOM = process.env.HUBOT_STARTUP_ROOM ? 'Shell'
-  # MESSAGE = process.env.HUBOT_STARTUP_MESSAGE ? 'I AM BORN ANEW'
-  # robot.messageRoom ROOM, MESSAGE
+  ROOM = process.env.HUBOT_STARTUP_ROOM ? 'Shell'
+  MESSAGE = process.env.HUBOT_STARTUP_MESSAGE ? 'I AM BORN ANEW'
+  robot.messageRoom ROOM, MESSAGE
 
   robot.respond /startup room/i, (res) ->
     res.send process.env.HUBOT_STARTUP_ROOM
