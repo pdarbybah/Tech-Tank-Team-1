@@ -57,6 +57,29 @@ module.exports = (robot) ->
 
         res.send "#{issue.title}"
         res.send "( https://bitbucket.org/tutorials/tutorials.bitbucket.org/issues/#{issue.local_id} )"
+
+  robot.hear /recent commit by (.*)/i, (res) ->
+    name = res.match[1]
+    name = name.toLowerCase()
+    robot.http("https://bitbucket.org/api/1.0/repositories/tutorials/tutorials.bitbucket.org/changesets?limit=50")
+      .get() (err, msg, body) ->
+        if err
+          res.send "Encountered Error: #{err}"
+          return
+
+        data = JSON.parse body
+        array = data.changesets
+        array.reverse()
+        for commit in array
+          author = "#{commit.raw_author}"
+          author = author.toLowerCase()
+          index = author.indexOf "#{name}", 0
+          if index > -1
+            res.send "#{commit.node} - #{commit.message}"
+            return
+        
+        res.send "No recent commits by #{name}!"
+        
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
