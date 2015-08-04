@@ -9,7 +9,9 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.messageRoom "general" "I AM BORN ANEW"
+  ROOM = process.env.HUBOT_STARTUP_ROOM ? 'Shell'
+  MESSAGE = process.env.HUBOT_STARTUP_MESSAGE ? 'I AM BORN ANEW'
+  robot.messageRoom ROOM, MESSAGE
 
   # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
