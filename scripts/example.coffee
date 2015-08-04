@@ -38,6 +38,19 @@ module.exports = (robot) ->
 
         res.send "#{commit.node} - #{commit.message}"
         res.send "( https://bitbucket.org/tutorials/tutorials.bitbucket.org/commits/#{commit.raw_node} )"
+		
+  robot.hear /last major issue/i, (res) ->
+    robot.http("https://bitbucket.org/api/1.0/repositories/tutorials/tutorials.bitbucket.org/issues?limit=1&sort=utc_created_on&priority=major")
+      .get() (err, msg, body) ->
+        if err
+          res.send "Encountered Error: #{err}"
+          return
+
+        data = JSON.parse body
+        issue = data.issues[0]
+
+        res.send "#{issue.title}"
+        res.send "( https://bitbucket.org/tutorials/tutorials.bitbucket.org/issues/#{issue.local_id} )"
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
