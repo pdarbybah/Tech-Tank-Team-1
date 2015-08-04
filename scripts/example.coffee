@@ -9,8 +9,7 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-
-  robot.messageRoom "I AM REBORN ANEW!"
+  robot.messageRoom "general" "I AM BORN ANEW"
 
   # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
