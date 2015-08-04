@@ -36,7 +36,7 @@ module.exports = (robot) ->
         data = JSON.parse body
         commit = data.changesets[0]
 
-        res.send "#{commit.node} - #{commit.message}"
+        res.send "<https://bitbucket.org/tutorials/tutorials.bitbucket.org/commits/#{data.raw_node}|#{commit.node} - #{commit.message}>"
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
