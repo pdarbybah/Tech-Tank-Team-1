@@ -1980,3 +1980,4 @@ node_modules/hubot/test/listener_test.coffee
 node_modules/hubot/test/message_test.coffee
 node_modules/hubot/test/robot_test.coffee
 node_modules/hubot/test/user_test.coffee
+.hubot_history
