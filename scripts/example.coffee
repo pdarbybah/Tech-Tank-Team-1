@@ -9,11 +9,6 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-  robot.respond /corgi me/i, (msg) ->
-    msg.http("http://corginator.herokuapp.com/random")
-      .get() (err, res, body) ->
-        msg.send JSON.parse(body).corgi
-  
   # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
     res.send "badger badger badger"
