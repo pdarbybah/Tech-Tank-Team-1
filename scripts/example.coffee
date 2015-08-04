@@ -26,10 +26,17 @@ module.exports = (robot) ->
   robot.leave (res) ->
     res.send "Now he can't hear me talk trash about him."
 
+  robot.hear /last commit/i, (res) ->
+    robot.http("https://bitbucket.org/api/1.0/repositories/tutorials/tutorials.bitbucket.org/changesets?limit=1")
+      .get() (err, msg, body) ->
+        if err
+          res.send "Encountered Error: #{err}"
+          return
 
-    
-  robot.hear /porter/i, (res) ->
-    res.send "HOW MUCH DO YOU LOVE YOUR LORD AND SAVIOR PORTER DARBY?"
+        data = JSON.parse body
+        commit = data.changesets[0]
+
+        res.send "#{commit.node} - #{commit.message}"
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
