@@ -13,6 +13,9 @@ module.exports = (robot) ->
   MESSAGE = process.env.HUBOT_STARTUP_MESSAGE ? 'I AM BORN ANEW'
   robot.messageRoom ROOM, MESSAGE
 
+  robot.respond /startup room/i, (res) ->
+    res.send process.end.HUBOT_STARTUP_ROOM
+
   # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
     res.send "badger badger badger"
