@@ -10,12 +10,24 @@
 
 module.exports = (robot) ->
 
+  # If the robot "hears" anyone say badger, even if it's not directed at the robot, it'll respond.
   robot.hear /badger/i, (res) ->
-    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+    res.send "badger badger badger"
 
+  # If someone is talking to the bot directly, it'll respond.
+  robot.respond /hi!/i, (res) ->
+    res.send "Hello!"
+
+  # If someone enters the room.
   robot.enter (res) ->
     res.send "I SEE YOU"
 
+  # If someone leaves the room.
+  robot.leave (res) ->
+    res.send "Now he can't hear me talk trash about him."
+
+
+    
   robot.hear /porter/i, (res) ->
     res.send "HOW MUCH DO YOU LOVE YOUR LORD AND SAVIOR PORTER DARBY?"
   #
