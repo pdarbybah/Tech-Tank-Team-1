@@ -37,6 +37,10 @@ module.exports = (robot) ->
   robot.leave (res) ->
     res.send "Now he can't hear me talk trash about him."
 
+  displayChangeSet = (commit, res) ->
+    res.send "#{commit.node} - #{commit.message}"
+    res.send "( https://bitbucket.org/tutorials/tutorials.bitbucket.org/commits/#{commit.raw_node} )"
+    
   robot.hear /last commit/i, (res) ->
     robot.http("https://bitbucket.org/api/1.0/repositories/tutorials/tutorials.bitbucket.org/changesets?limit=1")
       .get() (err, msg, body) ->
@@ -47,8 +51,7 @@ module.exports = (robot) ->
         data = JSON.parse body
         commit = data.changesets[0]
 
-        res.send "#{commit.node} - #{commit.message}"
-        res.send "( https://bitbucket.org/tutorials/tutorials.bitbucket.org/commits/#{commit.raw_node} )"
+        displayChangeSet(commit, res)
 		
   robot.hear /last major issue/i, (res) ->
     robot.http("https://bitbucket.org/api/1.0/repositories/tutorials/tutorials.bitbucket.org/issues?limit=1&sort=utc_created_on&priority=major")
@@ -80,7 +83,7 @@ module.exports = (robot) ->
           author = author.toLowerCase()
           index = author.indexOf "#{name}", 0
           if index > -1
-            res.send "#{commit.node} - #{commit.message}"
+            displayChangeSet(commit, res)
             return
         
         res.send "No recent commits by #{name}!"
