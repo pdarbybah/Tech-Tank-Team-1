@@ -18,6 +18,11 @@ module.exports = (robot) ->
   robot.hear /set message (.*)/i, (res) ->
     MESSAGE = res[1]
 
+  robot.respond /corgi me/i, (msg) ->
+    msg.http("http://corginator.herokuapp.com/random")
+      .get() (err, res, body) ->
+        msg.send JSON.parse(body).corgi
+
   robot.respond /startup room/i, (res) ->
     res.send process.env.HUBOT_STARTUP_ROOM
 

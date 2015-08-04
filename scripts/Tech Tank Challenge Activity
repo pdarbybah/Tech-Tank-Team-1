@@ -2,8 +2,17 @@ Tech Tank Challenge Activity
 
 + Provide a prototype for a DevOps communication tool [a Slack bot known as ChatOps]
 	+ Can currently retrieve the last commit in bitbucket
+	+ Can search through recent commits for a person's commit
+	+ Find the last opened active major issue (BitBucket)
+	+ Announces when Hubot MegaTodd restarts
+		+ Shows that you don't need to start the conversation with MegaTodd, he is smart enough to talk on his own. To himself. Even if no one is listening.
+		+ Polling APIs for information and can display
 	+ Goals:
-		+ 
+		+ Look at pull requests, facilitate discussion around pull requests (BitBucket)
+		+ Bamboo
+			+ When builds are broken, can notify either specific users or the entire channel
+			+ Probably tell it to start a build
+		+ Link tickets and Confluence pages together via chat
 + Design the architecture for a cloud-based DevOps platform that will complement and support ChatOps
 	+ Atlassian suite
 		+ Bitbucket for git repository hosting
@@ -16,4 +25,7 @@ Tech Tank Challenge Activity
 		+ Robust and well-documented APIs (no API keys needed)
 + Present your solution with a focus on how your ChatOps prototype adds value to a strong DevOps platform
 	+ Cultural
-		+ Bring value by allowing the chat service to have the 
+		+ Bring value by allowing the chat service to have the the developers, the operation managers, and the DevOps platform pieces all integrated into a single communication tool
+			+ Allows for quick access to commits (for review) and issues (for discussion)
+	+ Control
+		+ Allows for 
